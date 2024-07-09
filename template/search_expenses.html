@@ -1,0 +1,94 @@
+<!-- templates/layout.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Expenses Management System">
+    <meta name="author" content="Your Name">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Link to Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material-UI CSS (if needed) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mui/4.12.0/umd/material-ui.development.min.css" integrity="sha512-+U4Vu7PpInVQwAch/1YZH2s66R5Juk0bSnB3b8FPRKUkcgDk8BSoUeKQHZbS/NmRNP+3Hs0QGfMlqWqjg8DrBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 100px); /* Adjust based on your footer height */
+            margin-bottom: 100px; /* Adjust based on your footer height */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar from layout.html -->
+    {% include 'layout.html' %}
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1 class="mt-5">חיפוש הוצאות</h1>
+        <form id="search-expense-form" method="POST" action="/searchExpenses">
+            <fieldset>
+                <div>
+                    <label><strong>שם משתמש:</strong></label>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
+                <div>
+                    <label><strong>סיסמה:</strong></label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                <div>
+                    <label><strong>חפש לפי:</strong></label>
+                    <select name="search_param" class="form-control" required>
+                        <option value="amount">סכום</option>
+                        <option value="date">תאריך</option>
+                        <option value="description">תיאור</option>
+                    </select>
+                </div>
+                <div>
+                    <label><strong>מונח חיפוש:</strong></label>
+                    <input type="text" name="search_value" class="form-control" required>
+                </div>
+                <div class="btns mt-3">
+                    <button class="btn btn-primary" type="submit">חפש הוצאות</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <!-- Footer from layout.html -->
+    <div class="footer">
+        <p>&copy; 2024 Expenses Management System. All rights reserved.</p>
+    </div>
+
+    <!-- Scripts for Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

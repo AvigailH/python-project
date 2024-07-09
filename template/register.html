@@ -1,0 +1,54 @@
+<!-- templates/register.html -->
+{% extends 'layout.html' %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Register</h2>
+    <form method="post" class="needs-validation" novalidate>
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+            <div class="invalid-feedback">Please provide a username.</div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+            <div class="invalid-feedback">Please provide a password.</div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+            <div class="invalid-feedback">Please provide a valid email.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+    {% if error %}
+    <p class="text-danger mt-3">{{ error }}</p>
+    {% endif %}
+</div>
+
+<!-- Bootstrap JS for form validation -->
+<script>
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            var forms = document.getElementsByClassName('needs-validation');
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+{% endblock %}
+
+<!-- MUI and Bootstrap scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/@mui/material/5.0.0-alpha.12/umd/material-ui.production.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

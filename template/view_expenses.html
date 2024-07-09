@@ -1,0 +1,40 @@
+<!-- templates/register.html -->
+{% extends 'layout.html' %}
+{% block title %}Register{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1 class="mt-5">הוצאות משתמש</h1>
+        <form id="search-expense-form" method="POST" action="/viewExpenses">
+        <fieldset>
+<!--            <label><strong>שם משתמש:</strong>-->
+<!--                <input type="text" name="username" class="form-control" required>-->
+<!--            </label>-->
+<!--            <label><strong>סיסמה:</strong>-->
+<!--                <input type="text" name="password" class="form-control" required>-->
+<!--            </label>-->
+            <button type="submit" class="btn btn-primary mt-2">חפש הוצאות</button>
+        </fieldset>
+    </form>
+
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>סכום</th>
+                    <th>קטגוריה</th>
+                    <th>תאריך</th>
+                    <th>תיאור</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for expense in expenses %}
+                <tr>
+                    <td>{{ expense.amount }}</td>
+                    <td>{{ expense.category_name }}</td>
+                    <td>{{ expense.date }}</td>
+                    <td>{{ expense.description }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

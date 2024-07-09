@@ -1,0 +1,39 @@
+ <!-- templates/register.html -->
+{% extends 'layout.html' %}
+{% block title %}Register{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1 class="mt-5">הוצאות משתמש</h1>
+        <form id="add-expense-form" method="POST" action="/addExpense">
+            <fieldset>
+                <label><strong>סכום:</strong></label>
+                <input type="number" name="amount" class="form-control" required>
+
+                <label><strong>תאריך:</strong></label>
+                <input type="date" name="date" class="form-control" required>
+
+                <label><strong>קטגוריה:</strong></label>
+                <select name="category_id" class="form-control">
+                    {% for category in categories %}
+                        <option value="{{ category.category_id }}">{{ category.category_name }}</option>
+                    {% endfor %}
+                </select>
+
+                <label><strong>תיאור:</strong></label>
+                <input type="text" name="description" class="form-control">
+
+                <div class="btns mt-3">
+                    <button class="btn btn-primary" type="submit">הוסף הוצאה</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <!-- Scripts for Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}
+
+ templates/register.html
+ templates/add_expense.html
